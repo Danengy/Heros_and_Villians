@@ -5,4 +5,4 @@ from .models import Super_Types
 class Super_TypesSerializer(serializers.ModelSerializer):
     class Meta:
         models = Super_Types
-        fields = ['type']
+        fields = ['id', 'type']

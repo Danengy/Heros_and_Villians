@@ -10,8 +10,10 @@ from .serializers import SupersSerializer
 def supers_list(request):
 
     if request.method == 'GET':
-        heroes_villians = Supers.objects.all()
-        h_v_serializer = SupersSerializer(heroes_villians, many=True)
+        heroes = Supers.objects.filter(super_type__type='Hero')
+        villians = Supers.objects.filter(super_type__type='Villian')
+        heroes_serializer = SupersSerializer(heroes, many=True)
+        villian_serializer = SupersSerializer(villians, many=True)
         super_type_param = request.query_params.get('super_type')
         print(super_type_param)
         supers = Supers.objects.all()
@@ -19,8 +21,8 @@ def supers_list(request):
             supers =supers.filter(super_type__type=super_type_param)
         elif not super_type_param:
             custom_reponse = {
-                'Hero' : h_v_serializer.data,
-                'Villian': h_v_serializer.data
+                'Hero' : heroes_serializer.data,
+                'Villian': villian_serializer.data
             }
             return Response(custom_reponse)
         serializer = SupersSerializer(supers, many = True)
