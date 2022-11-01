@@ -35,7 +35,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\r\n    \"name\": \"Iron Man\",\r\n    \"alter_ego\": \"Tony Stark\",\r\n    \"primary_ability\": \"Genius\",\r\n    \"secondary_ability\": \"Wears modular arc reactor-powered Iron Man armor, granting superhuman strength & durability, the ability to fly & project Repulsor blasts.\",\r\n    \"catchphrase\": \"I am Iron Man\",\r\n    \"super_type\": 1\r\n}",
+					"raw": "{\r\n\r\n    \"name\": \"Iron Man\",\r\n    \"alter_ego\": \"Tony Stark\",\r\n    \"primary_ability\": \"Genius\",\r\n    \"secondary_ability\": \"Wears modular arc reactor-powered Iron Man armor, granting superhuman strength & durability, the ability to fly & project Repulsor blasts.\",\r\n    \"catchphrase\": \"I am Iron Man\",\r\n    \"super_type_id\": 1\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -67,7 +67,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/supers/3/",
+					"raw": "http://127.0.0.1:8000/api/supers/15/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -79,7 +79,7 @@
 					"path": [
 						"api",
 						"supers",
-						"3",
+						"15",
 						""
 					]
 				}
@@ -93,7 +93,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\r\n            \"name\": \"Iron Man\",\r\n            \"alter_ego\": \"Tony Stark\",\r\n            \"primary_ability\": \"Genius\",\r\n            \"secondary_ability\": \"Wears modular arc reactor-powered Iron Man armor, granting superhuman strength & durability, the ability to fly & project Repulsor blasts.\",\r\n            \"catchphrase\": \"I am Iron Man\",\r\n            \"super_type\": {\r\n                \"id\": 1,\r\n                \"type\": \"Hero\"\r\n            }\r\n        }",
+					"raw": "{\r\n\r\n            \"name\": \"Iron Bird\",\r\n            \"alter_ego\": \"Woody the Woodpecker\",\r\n            \"primary_ability\": \"Super Flight\",\r\n            \"secondary_ability\": \"Super peck\",\r\n            \"catchphrase\": \"Ride like the wind\",\r\n            \"super_type_id\": 1\r\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,7 +101,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/supers/3/",
+					"raw": "http://127.0.0.1:8000/api/supers/27/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -113,7 +113,7 @@
 					"path": [
 						"api",
 						"supers",
-						"3",
+						"27",
 						""
 					]
 				}
@@ -135,7 +135,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/supers",
+					"raw": "http://127.0.0.1:8000/api/supers/28/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -146,19 +146,33 @@
 					"port": "8000",
 					"path": [
 						"api",
-						"supers"
+						"supers",
+						"28",
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get_only_heroes_or_villians",
+			"name": "Get_only_heroes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n        \"title\": \"Kit-Kat\",\r\n        \"description\": \"Chocolate-covered wafer bar confection.\",\r\n        \"price\": 0.90,\r\n        \"inventory_quantity\": 100\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/supers?super_type=",
+					"raw": "http://127.0.0.1:8000/api/supers?super_type=Hero",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -174,7 +188,36 @@
 					"query": [
 						{
 							"key": "super_type",
-							"value": ""
+							"value": "Hero"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_only_villians",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/supers?super_type=Villian",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"supers"
+					],
+					"query": [
+						{
+							"key": "super_type",
+							"value": "Villian"
 						}
 					]
 				}
